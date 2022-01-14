@@ -1,4 +1,7 @@
-function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text')  { //union type this can prevent any other value.
+type Combinable = number | string; // declaring the union type in advance to be reused.
+type ConversionDescriptor = 'as-number' | 'as-text';
+
+function combine(input1: Combinable, input2: Combinable, resultConversion: ConversionDescriptor)  { //union type this can prevent any other value.
     let result;
     if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
         result = +input1 + +input2;
@@ -17,7 +20,7 @@ function combine(input1: number | string, input2: number | string, resultConvers
 const combinedAges = combine(30, 26, 'as-number');
 console.log(combinedAges)
 
-const combinedStringAges = combine('30', '26', 'as-number');
+const combinedStringAges = combine('30', '26', 'as-text');
 console.log(combinedStringAges)
 
 const combinedNames = combine('Max', 'Anna', 'as-text');
