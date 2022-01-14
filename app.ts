@@ -1,24 +1,15 @@
-const person: {
-    name: string;
-    age: number;
-    hobbies: string[];
-    role: [number, string];
-} = {
-    name: "James",
-    age: 34,
-    hobbies: ["sports", "cooking", "reading", "writing"],
-    role: [2, 'author']
-}
+function combine(input1: number | string, input2: number | string)  { //union type
+    let result;
+    if (typeof input1 === 'number' && typeof input2 === 'number') {
+        result = input1 + input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+        return result;
+    }
 
-person.role.push('admin');
-// person.role[1] = 10;
+const combinedAges = combine(30, 26);
+console.log(combinedAges)
 
-let favouriteActivites: string[];
-favouriteActivites = ["writing"]
-
-console.log(favouriteActivites)
-
-for (const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase())
-    // console.log(hobby.map()) Can see how Typescript understands.
-}
+const combinedNames = combine('Max', 'Anna');
+console.log(combinedNames)
