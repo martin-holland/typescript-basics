@@ -1,11 +1,24 @@
-function add(n1: number, n2:number): number {
-    return n1 + n2;
+let userInput: unknown; // used when a user inputs something. Better than 'any'
+let userName: string; 
+
+userInput = 5;
+userInput = 'Max';
+// Demonstrates the unknown like any type.
+// unknown type checks what type was assigned before it.
+
+if (typeof userInput === "string") {
+    userName = userInput;
 }
 
-function printResult(num: number): void { // this function doesnt have a return statement. If you set the type as undefinied, Typescript would expect you to return, but return nothing.
-    console.log('Result: ' + num);
+// userName = userInput; // not assignable due to userInput = 5 if you use type any, the problem goes away.
+
+function generateError(message: string, code: number): never {
+    throw {message: message, errorCode: code};
+    // while (true) {} // also a never return but is an infinite loop
 }
 
-printResult(add(5,12))
+// const result = generateError('An error occurred!', 500); // this demonstrates that the console never shows a return because the return type is in fact never. This is a much clearer approach for coding.
+generateError('An error occurred!', 500);
 
-// let someValue: undefinied,
+
+
